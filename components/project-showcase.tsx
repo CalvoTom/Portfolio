@@ -87,7 +87,6 @@ export default function ProjectShowcase() {
               onClick={handlePrev}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label="Projet précédent"
-              tabIndex={-1}
             >
               <ChevronLeft size={20} aria-hidden="true" />
             </button>
@@ -95,7 +94,6 @@ export default function ProjectShowcase() {
               onClick={handleNext}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label="Projet suivant"
-              tabIndex={-1}
             >
               <ChevronRight size={20} aria-hidden="true" />
             </button>
@@ -165,7 +163,7 @@ export default function ProjectShowcase() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
-                      aria-label={`Voir le projet ${currentProject.title} en ligne`}
+                      aria-label={`Voir le projet ${currentProject.title}`}
                     >
                       <ExternalLink size={16} aria-hidden="true" />
                       Voir le projet
@@ -177,7 +175,7 @@ export default function ProjectShowcase() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2 border border-blue-600 text-blue-300 hover:bg-blue-900/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-blue-900"
-                      aria-label={`Voir le code source de ${currentProject.title} sur GitHub`}
+                      aria-label={`Accédez au code source de ${currentProject.title} sur GitHub`}
                     >
                       <Github size={16} aria-hidden="true" />
                       Code source
