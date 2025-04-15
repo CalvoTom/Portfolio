@@ -8,7 +8,12 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Tom Calvo",
   description: "Portfolio de Tom Calvo, Data Scientist et développeur informatique",
-    generator: 'v0.dev'
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16' },
+      { url: '/icon.png', sizes: '192x192' }
+    ],
+  }
 }
 
 export default function RootLayout({
