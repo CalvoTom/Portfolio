@@ -1,9 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import { Send } from "lucide-react"
+import { Send } from 'lucide-react'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +15,7 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<null | "success" | "error">(null)
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -29,25 +29,49 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Réinitialiser les états
     setIsSubmitting(true)
-
-    // Simuler l'envoi du formulaire
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus("success")
-
-      // Réinitialiser le formulaire après 3 secondes
-      setTimeout(() => {
-        setSubmitStatus(null)
-        setFormData({
-          name: "",
-          email: "",
-          location: "",
-          message: "",
-          consent: false,
-        })
-      }, 3000)
-    }, 1500)
+    setSubmitStatus(null)
+    setErrorMessage("")
+    
+    try {
+      // Envoyer les données à l'API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      // Analyser la réponse
+      const data = await response.json();
+      
+      // Vérifier si la requête a réussi
+      if (!response.ok) {
+        throw new Error(data.error || 'Une erreur est survenue lors de l\'envoi du message');
+      }
+      
+      // Succès
+      setSubmitStatus("success");
+      
+      // Réinitialiser le formulaire
+      setFormData({
+        name: "",
+        email: "",
+        location: "",
+        message: "",
+        consent: false,
+      });
+      
+    } catch (error) {
+      console.error('Erreur lors de la soumission du formulaire:', error);
+      setSubmitStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : 'Une erreur est survenue lors de l\'envoi du message');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -67,6 +91,7 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-required="true"
+            disabled={isSubmitting}
           />
         </div>
 
@@ -84,6 +109,7 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-required="true"
+            disabled={isSubmitting}
           />
         </div>
 
@@ -99,6 +125,7 @@ export default function ContactForm() {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-required="true"
+            disabled={isSubmitting}
           >
             <option value="" disabled>
               Sélectionnez votre pays
@@ -122,6 +149,7 @@ export default function ContactForm() {
             rows={5}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-required="true"
+            disabled={isSubmitting}
           ></textarea>
         </div>
 
@@ -136,6 +164,7 @@ export default function ContactForm() {
               required
               className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               aria-required="true"
+              disabled={isSubmitting}
             />
           </div>
           <div className="ml-3 text-sm">
@@ -151,6 +180,7 @@ export default function ContactForm() {
           type="submit"
           disabled={isSubmitting}
           className="w-full flex justify-center items-center px-6 py-3 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          aria-disabled={isSubmitting}
         >
           {isSubmitting ? (
             <span className="flex items-center">
@@ -159,6 +189,7 @@ export default function ContactForm() {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path
@@ -178,15 +209,18 @@ export default function ContactForm() {
         </button>
       </div>
 
+      {/* Messages de statut */}
       {submitStatus === "success" && (
         <div className="p-4 bg-green-100 text-green-800 rounded-md" role="alert">
-          Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.
+          <p className="font-medium">Message envoyé avec succès !</p>
+          <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
         </div>
       )}
 
       {submitStatus === "error" && (
         <div className="p-4 bg-red-100 text-red-800 rounded-md" role="alert">
-          Une erreur s'est produite lors de l'envoi du message. Veuillez réessayer plus tard.
+          <p className="font-medium">Erreur lors de l'envoi du message</p>
+          <p>{errorMessage || "Une erreur s'est produite. Veuillez réessayer plus tard."}</p>
         </div>
       )}
     </form>
