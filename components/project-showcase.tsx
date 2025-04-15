@@ -87,6 +87,7 @@ export default function ProjectShowcase() {
               onClick={handlePrev}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label="Projet précédent"
+              tabIndex={-1}
             >
               <ChevronLeft size={20} aria-hidden="true" />
             </button>
@@ -94,6 +95,7 @@ export default function ProjectShowcase() {
               onClick={handleNext}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30 transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900"
               aria-label="Projet suivant"
+              tabIndex={-1}
             >
               <ChevronRight size={20} aria-hidden="true" />
             </button>
@@ -113,7 +115,7 @@ export default function ProjectShowcase() {
                   aria-selected={index === activeProject}
                   aria-label={`Voir le projet ${project.title}`}
                   role="tab"
-                  tabIndex={index === activeProject ? 0 : -1}
+                  tabIndex={-1}
                 />
               ))}
             </div>
@@ -131,7 +133,7 @@ export default function ProjectShowcase() {
                 role="tabpanel"
                 aria-labelledby={`project-${currentProject.id}`}
               >
-                <h3 id={`project-${currentProject.id}`} className="text-2xl md:text-3xl font-bold mb-3">
+                <h3 id={`project-${currentProject.id}`} className="text-2xl md:text-3xl font-bold mb-3" tabIndex={0}>
                   {currentProject.title}
                 </h3>
                 <p className="text-lg text-blue-200 mb-4">{currentProject.description}</p>
