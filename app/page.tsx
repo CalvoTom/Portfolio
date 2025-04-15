@@ -191,6 +191,28 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Sauveteur */}
+                <div
+                  className="relative focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+                  tabIndex={0}
+                  role="region"
+                  aria-labelledby="job-sauveteur"
+                >
+                  <div className="absolute top-0 left-[-9px] w-4 h-4 rounded-full bg-blue-700" aria-hidden="true"></div>
+                  <div className="bg-white p-5 rounded-lg shadow-md">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Briefcase className="text-blue-700" size={18} aria-hidden="true" />
+                      <h3 id="job-sauveteur" className="text-lg font-semibold text-gray-900">
+                        Sauveteur aquatique
+                      </h3>
+                    </div>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-gray-500 text-sm">2021 - 2023</span>
+                    </div>
+                    <p className="text-gray-700 text-sm">Gestion d'équipe et de matériels.</p>
+                  </div>
+                </div>
+
                 {/* Baccalauréat */}
                 <div
                   className="relative focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
@@ -217,28 +239,6 @@ export default function Home() {
                       Spécialités: Mathématiques, Numérique et sciences informatiques, Mathématique expert. Mention Très
                       Bien.
                     </p>
-                  </div>
-                </div>
-
-                {/* Sauveteur */}
-                <div
-                  className="relative focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
-                  tabIndex={0}
-                  role="region"
-                  aria-labelledby="job-sauveteur"
-                >
-                  <div className="absolute top-0 left-[-9px] w-4 h-4 rounded-full bg-blue-700" aria-hidden="true"></div>
-                  <div className="bg-white p-5 rounded-lg shadow-md">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Briefcase className="text-blue-700" size={18} aria-hidden="true" />
-                      <h3 id="job-sauveteur" className="text-lg font-semibold text-gray-900">
-                        Sauveteur aquatique
-                      </h3>
-                    </div>
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-gray-500 text-sm">2021 - 2023</span>
-                    </div>
-                    <p className="text-gray-700 text-sm">Gestion d'équipe et de matériels.</p>
                   </div>
                 </div>
               </div>
