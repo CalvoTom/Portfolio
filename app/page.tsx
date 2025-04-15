@@ -290,7 +290,7 @@ export default function Home() {
                   Me contacter sur LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="/documents/CV_Tom_CALVO_2025.pdf"
                   className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-md hover:bg-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                   aria-label="Télécharger le CV de Tom Calvo"
                   download
