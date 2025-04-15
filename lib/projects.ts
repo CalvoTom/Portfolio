@@ -55,7 +55,7 @@ export const projects: Project[] = [
     results:
       "Le système permet désormais d'analyser efficacement les flux de personnes dans différents types d'espaces commerciaux, offrant des insights précieux pour l'optimisation de l'agencement. Les tests en conditions réelles ont montré une amélioration significative de l'expérience client et une augmentation de l'efficacité opérationnelle dans les établissements équipés.",
     links: {
-      github: "https://github.com/CalvoTom",
+      github: "https://github.com/lucas04200/Ai_watcher.git",
     },
   },
   {
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     results:
       "Le projet a été complété avec succès dans le délai imparti et a reçu des retours positifs pour son design cohérent et l'expérience de jeu immersive. L'interface utilisateur intuitive et les mécaniques de jeu bien équilibrées ont été particulièrement appréciées.",
     links: {
-      github: "https://github.com/CalvoTom",
+      github: "https://github.com/romx88/CashBank.git",
     },
   },
 ]
